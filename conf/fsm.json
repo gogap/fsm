@@ -1,0 +1,33 @@
+{
+  "fsm": [
+    {
+      "name": "fsm1",
+      "sets": {
+        "status": ["status1", "status2", "status3"],
+        "events": ["event1", "event2"],
+        "transactions": [
+          {"id": 1, "current": "status1", "event": "event1", "target": "status2"},
+          {"id": 2, "current": "status2", "event": "event2", "target": "status3"}
+        ],
+        "transactions_group": [
+          {"name": "group1", "transaction_ids": [1]},
+          {"name": "group2", "transaction_ids": [2]}
+        ]
+      }
+    },
+    {
+      "name": "fsm2",
+      "sets": {
+        "status": ["status1", "status2", "status3"],
+        "events": ["event1", "event2"],
+        "transactions": [
+          {"id": 1, "current": "status1", "event": "event1", "target": "status2"},
+          {"id": 2, "current": "status2", "event": "event2", "target": "status3"}
+        ],
+        "transactions_group": [
+          {"name": "group1", "transaction_ids": [1, 2]}
+        ]
+      }
+    }
+  ]
+}
