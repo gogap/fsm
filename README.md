@@ -1,4 +1,7 @@
 # fsm
+
+ [![Build Status](https://travis-ci.org/rut-go/fsm.png)](https://travis-ci.org/rut-go/fsm)
+
 Finite-state machine in go
 
 # Sample
