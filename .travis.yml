@@ -1,5 +1,6 @@
 language: go
 
 script:
-  - go get https://github.com/rut-go/fsm
+  - go get github.com/smartystreets/goconvey/convey
+  - go get github.com/rut-go/fsm
   - go test -v ./...
