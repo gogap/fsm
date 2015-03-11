@@ -22,16 +22,16 @@ func init() {
 	readConfig("./conf/fsm.json")
 }
 
-// check system whether it exists in fsm config
+// check system whether it exists in fsm config,
 // if not return false, then true
 func CheckSystem(system string) bool {
 	return fsmSystems[system]
 }
 
-// Get target status by current status and event
-// Current status now is business status
-// event is a trigger to find target status
-// group means several transation paths could combine together
+// Get target status by current status and event,
+// Current status now is business status,
+// event is a trigger to find target status,
+// group means several transation paths could combine together.
 func GetTargetStatus(system, curStatus, event string, groups []string) (tran transaction, err error) {
 	if !CheckSystem(system) {
 		err = fmt.Errorf("system not found")
