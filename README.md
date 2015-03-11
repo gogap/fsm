@@ -1,13 +1,17 @@
 # fsm
 
-* Build [![Build Status](https://travis-ci.org/rut-go/fsm.png)](https://travis-ci.org/rut-go/fsm)
-* Doc [![GoDoc](http://godoc.org/github.com/rut-go/fsm?status.svg)](http://godoc.org/github.com/rut-go/fsm)
-
 Finite-state machine in go
 
-# Sample
+* [![Build Status](https://travis-ci.org/rut-go/fsm.png)](https://travis-ci.org/rut-go/fsm)
+* [![GoDoc](http://godoc.org/github.com/rut-go/fsm?status.svg)](http://godoc.org/github.com/rut-go/fsm)
 
-## Config
+
+* [点击进入中文相关说明](http://zh.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA)
+* [Click to article in English](http://en.wikipedia.org/wiki/Finite-state_machine)
+
+## Sample
+
+**Config**
 
 ```
 {
@@ -45,9 +49,9 @@ Finite-state machine in go
 }
 ```
 
-## Request
+**TEST**
 
-**fsm_test.go**
+fsm_test.go
 
 ```
 func TestFSM(t *testing.T) {
