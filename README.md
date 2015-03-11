@@ -1,6 +1,7 @@
 # fsm
 
- [![Build Status](https://travis-ci.org/rut-go/fsm.png)](https://travis-ci.org/rut-go/fsm)
+* Build [![Build Status](https://travis-ci.org/rut-go/fsm.png)](https://travis-ci.org/rut-go/fsm)
+* Doc [![GoDoc](http://godoc.org/github.com/rut-go/fsm?status.svg)](http://godoc.org/github.com/rut-go/fsm)
 
 Finite-state machine in go
 
