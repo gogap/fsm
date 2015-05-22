@@ -1,6 +1,8 @@
 language: go
 
-script:
+install:
   - go get github.com/smartystreets/goconvey/convey
   - go get github.com/go-rut/fsm
-  - go test -v ./...
+
+script:
+  - go test -v ./... -covermode=count -coverprofile=coverage.out $HOME/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_TOKEN
