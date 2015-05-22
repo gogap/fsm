@@ -2,8 +2,8 @@
 
 Finite-state machine in go
 
-* [![Build Status](https://travis-ci.org/rut-go/fsm.png)](https://travis-ci.org/rut-go/fsm)
-* [![GoDoc](http://godoc.org/github.com/rut-go/fsm?status.svg)](http://godoc.org/github.com/rut-go/fsm)
+* [![Build Status](https://travis-ci.org/go-rut/fsm.png)](https://travis-ci.org/rut-go/fsm)
+* [![GoDoc](http://godoc.org/github.com/go-rut/fsm?status.svg)](http://godoc.org/github.com/rut-go/fsm)
 
 
 * [点击进入中文相关说明](http://zh.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E6%9C%BA)

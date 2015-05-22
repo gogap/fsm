@@ -2,5 +2,5 @@ language: go
 
 script:
   - go get github.com/smartystreets/goconvey/convey
-  - go get github.com/rut-go/fsm
+  - go get github.com/go-rut/fsm
   - go test -v ./...
