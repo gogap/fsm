@@ -2,9 +2,7 @@ language: go
 
 install:
   - go get github.com/smartystreets/goconvey/convey
-  - go get code.google.com/p/go.tools/cmd/cover
-  - go get github.com/mattn/goveralls
   - go get github.com/go-rut/fsm
 
 script:
-  - go test -v ./... -covermode=count -coverprofile=coverage.out $GOPATH/bin/goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_TOKEN -service_name=travis-ci -repo_token $COVERALLS_TOKEN
+  - go test -v ./...
