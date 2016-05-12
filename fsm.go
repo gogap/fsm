@@ -32,17 +32,27 @@ func CheckSystem(system string) bool {
 // Current status now is business status,
 // event is a trigger to find target status,
 // group means several transation paths could combine together.
-func GetTargetStatus(system, curStatus, event string, groups []string) (tran transaction, err error) {
+func GetTargetStatus(system, curStatus, event string, groups ...string) (tran transaction, err error) {
 	if !CheckSystem(system) {
 		err = fmt.Errorf("system not found")
 		return
 	}
-	for _, group := range groups {
-		key := generateTransKey(system, group, curStatus, event)
-		if t := fsmTrans[key]; t != nil {
+
+	if len(groups) == 0 {
+		t := fsmTrans[generateTransKey(system, defaultGroupName, curStatus, event)]
+		if t != nil {
 			return *t, nil
 		}
+
+	} else {
+		for _, group := range groups {
+			key := generateTransKey(system, group, curStatus, event)
+			if t := fsmTrans[key]; t != nil {
+				return *t, nil
+			}
+		}
 	}
+
 	err = fmt.Errorf("transaction not found")
 	return
 }

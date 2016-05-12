@@ -24,47 +24,64 @@ func TestFSM(t *testing.T) {
 	Convey("failed get target status", t, func() {
 		Convey("when system not in conf", func() {
 			Convey("will return system not found", func() {
-				_, err := GetTargetStatus("fsm3", "status1", "event1", []string{"group1"})
+				_, err := GetTargetStatus("fsm", "status1", "event1", "group1")
 				So(err, ShouldNotBeNil)
 				So(err.Error(), ShouldEqual, "system not found")
 			})
 		})
 		Convey("when status not in system", func() {
 			Convey("will return transaction not found", func() {
-				_, err := GetTargetStatus("fsm1", "status2", "event1", []string{"group1"})
+				_, err := GetTargetStatus("fsm1", "status2", "event1", "group1")
 				So(err, ShouldNotBeNil)
 				So(err.Error(), ShouldEqual, "transaction not found")
 			})
 		})
 		Convey("when event not in system", func() {
 			Convey("will return transaction not found", func() {
-				_, err := GetTargetStatus("fsm1", "status1", "event", []string{"group1"})
+				_, err := GetTargetStatus("fsm1", "status1", "event", "group1")
 				So(err, ShouldNotBeNil)
 				So(err.Error(), ShouldEqual, "transaction not found")
 			})
 		})
 		Convey("when group not in system", func() {
 			Convey("will return transaction not found", func() {
-				_, err := GetTargetStatus("fsm1", "status1", "event1", []string{"group3"})
+				_, err := GetTargetStatus("fsm1", "status1", "event1", "group3")
 				So(err, ShouldNotBeNil)
 				So(err.Error(), ShouldEqual, "transaction not found")
 			})
 		})
 	})
+
 	Convey("success get target status", t, func() {
-		Convey("get test fsm", func() {
+		Convey("get test fsm with groups", func() {
 			Convey("will return transaction", func() {
-				tran, err := GetTargetStatus("fsm1", "status1", "event1", []string{"group1"})
+				tran, err := GetTargetStatus("fsm1", "status1", "event1", "group1")
 				So(err, ShouldBeNil)
 				So(tran.TargetStatus, ShouldEqual, "status2")
-				tran, err = GetTargetStatus("fsm1", "status2", "event2", []string{"group2", "group3"})
+
+				tran, err = GetTargetStatus("fsm1", "status2", "event2", "group2", "group3")
 				So(err, ShouldBeNil)
 				So(tran.TargetStatus, ShouldEqual, "status3")
 
-				tran, err = GetTargetStatus("fsm2", "status1", "event1", []string{"group1"})
+				tran, err = GetTargetStatus("fsm2", "status1", "event1", "group1")
 				So(err, ShouldBeNil)
 				So(tran.TargetStatus, ShouldEqual, "status2")
-				tran, err = GetTargetStatus("fsm2", "status2", "event2", []string{"group1"})
+				tran, err = GetTargetStatus("fsm2", "status2", "event2", "group1")
+				So(err, ShouldBeNil)
+				So(tran.TargetStatus, ShouldEqual, "status3")
+			})
+		})
+		Convey("get test fsm with default groups", func() {
+			Convey("will return transaction", func() {
+				tran, err := GetTargetStatus("fsm1", "status2", "event2")
+				So(err, ShouldBeNil)
+				So(tran.TargetStatus, ShouldEqual, "status3")
+
+				tran, err = GetTargetStatus("fsm3", "status1", "event1")
+				So(err, ShouldBeNil)
+				So(tran.TargetStatus, ShouldEqual, "status2")
+
+				tran, err = GetTargetStatus("fsm3", "status2", "event2")
 				So(err, ShouldBeNil)
 				So(tran.TargetStatus, ShouldEqual, "status3")
 			})

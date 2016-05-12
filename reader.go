@@ -23,6 +23,10 @@ import (
 var fsmTrans map[string]*transaction
 var fsmSystems map[string]bool
 
+const (
+	defaultGroupName = "defaultGroupAllTransactions"
+)
+
 type fsm struct {
 	SystemFSM []systemFSM `json:"fsm"`
 }
@@ -112,7 +116,12 @@ func readConfig(filename string) (fsmConfigs *fsm) {
 			}
 			checkTrans[k] = true
 			trans[t.Id] = &tran
+
+			// Add transaction into default group
+			transKey := generateTransKey(v.Name, defaultGroupName, t.CurrentStatus, t.Event)
+			fsmTrans[transKey] = &tran
 		}
+
 		checkOrgGroup := make(map[string]bool)
 		for _, ot := range v.FSMSets.TransactionsGroups {
 			if checkOrgGroup[ot.GroupName] {
