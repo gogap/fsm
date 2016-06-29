@@ -20,7 +20,7 @@ import (
 	"io/ioutil"
 )
 
-var fsmTrans map[string]*transaction
+var fsmTrans map[string]*Transaction
 var fsmSystems map[string]bool
 
 const (
@@ -39,11 +39,11 @@ type systemFSM struct {
 type sets struct {
 	Status             []string            `json:"status"`
 	Events             []string            `json:"events"`
-	Transactions       []transaction       `json:"transactions"`
+	Transactions       []Transaction       `json:"transactions"`
 	TransactionsGroups []transactionsGroup `json:"transactions_group"`
 }
 
-type transaction struct {
+type Transaction struct {
 	Id            int32  `json:"id"`
 	CurrentStatus string `json:"current"`
 	Event         string `json:"event"`
@@ -67,7 +67,7 @@ func readConfig(filename string) (fsmConfigs *fsm) {
 		panic(err)
 	}
 	fsmSystems = make(map[string]bool)
-	fsmTrans = make(map[string]*transaction)
+	fsmTrans = make(map[string]*Transaction)
 	for _, v := range fsmConfigs.SystemFSM {
 		if fsmSystems[v.Name] {
 			panic(fmt.Errorf("fsm name(%s) is already have, check your configure", v.Name))
@@ -91,7 +91,7 @@ func readConfig(filename string) (fsmConfigs *fsm) {
 		}
 
 		checkTrans := make(map[string]bool)
-		trans := make(map[int32]*transaction)
+		trans := make(map[int32]*Transaction)
 		for _, t := range v.FSMSets.Transactions {
 			fmtCstatus := fmt.Sprintf("%s:%s", v.Name, t.CurrentStatus)
 			fmtTstatus := fmt.Sprintf("%s:%s", v.Name, t.TargetStatus)

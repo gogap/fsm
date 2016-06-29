@@ -32,7 +32,7 @@ func CheckSystem(system string) bool {
 // Current status now is business status,
 // event is a trigger to find target status,
 // group means several transation paths could combine together.
-func GetTargetStatus(system, curStatus, event string, groups ...string) (tran transaction, err error) {
+func GetTargetStatus(system, curStatus, event string, groups ...string) (tran Transaction, err error) {
 	if !CheckSystem(system) {
 		err = fmt.Errorf("system not found")
 		return
