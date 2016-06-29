@@ -19,7 +19,7 @@ import (
 )
 
 func init() {
-	readConfig("./conf/fsm.json")
+	readConfig("./conf/fsm.conf")
 }
 
 // check system whether it exists in fsm config,
