@@ -18,10 +18,6 @@ import (
 	"fmt"
 )
 
-func init() {
-	readConfig("./conf/fsm.conf")
-}
-
 // check system whether it exists in fsm config,
 // if not return false, then true
 func CheckSystem(system string) bool {

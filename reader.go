@@ -55,14 +55,14 @@ type transactionsGroup struct {
 	TransactionIds []int32 `json:"transaction_ids"`
 }
 
-func readConfig(filename string) (fsmConfigs *fsm) {
-	var err error
+// Init init fsm by config file.
+func Init(configFilePath string) (err error) {
 	jsonData := []byte{}
-	if jsonData, err = ioutil.ReadFile(filename); err != nil {
+	if jsonData, err = ioutil.ReadFile(configFilePath); err != nil {
 		panic(err)
 	}
 
-	fsmConfigs = new(fsm)
+	fsmConfigs := new(fsm)
 	if err = json.Unmarshal(jsonData, fsmConfigs); err != nil {
 		panic(err)
 	}

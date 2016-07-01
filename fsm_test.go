@@ -21,6 +21,7 @@ import (
 )
 
 func TestFSM(t *testing.T) {
+	Init("./conf/fsm.conf")
 	Convey("failed get target status", t, func() {
 		Convey("when system not in conf", func() {
 			Convey("will return system not found", func() {
